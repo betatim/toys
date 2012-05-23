@@ -1,0 +1,32 @@
+message FourVector {
+	required double pt = 1;
+	required double eta = 2;
+	required double E = 3;
+	required double phi = 4;
+}
+
+message Electron {
+	required FourVector kin = 1;
+	required double isolation = 2;
+}
+
+message Muon {
+	required FourVector kin = 1;
+	required double isolation = 2;
+}
+
+message Jet {
+	required FourVector kin = 1;
+	required double isolation = 2;
+}
+
+message Event {
+	repeated Muon muons = 1;
+	repeated Electron electrons = 2;
+	repeated Jet jets = 3;
+	required double number = 4;
+}
+
+message Collection {
+	repeated Event events = 1;
+}
