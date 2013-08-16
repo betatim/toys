@@ -1,3 +1,7 @@
+# This short script won me GBP200 from the
+# nice people at ECM recruitment.
+# http://www.ecmselection.co.uk/brainbuster/2012/10/ecm-brainbuster-nodot-34-crack-the-code-and-win-200
+
 import time
 import string
 from hashlib import md5
