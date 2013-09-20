@@ -21,15 +21,16 @@ velo = {"top left": .725,
 print "Velo:"
 pprint(velo)
 # VeloPix like, different efficiencies
-# in all quadrants
-vp = {"top left": 0.,#velo["top left"] - .04,
+# in all quadrants, one turned off!
+vp = {"top left": velo["top left"] - .04,
       "top right":  velo["top right"] + .05,
       "bottom left":  velo["bottom left"] + .04,
       "bottom right": velo["bottom right"] - .05,
 }
 print "VP:"
 pprint(vp)
-# top and bottom asymmetry
+# top and bottom asymmetry in the
+# post magnet detector
 top_bottom_asym = 0.03
 muons = {"top left +1": .7,
          "top left -1": .7,
@@ -53,7 +54,7 @@ Nneg_vp = {-1: 0., +1: 0.}
 # efficiency does not have to reverse
 # perfectly when the polarity is flipped
 # as running conditions will vary over time
-reversal_asym = 0.0#1
+reversal_asym = 0.1
 
 #print "pol T/B L/R C e_velo e_muon"
 for polarity in (-1, +1):
