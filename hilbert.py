@@ -1,8 +1,12 @@
 import numpy as np
+from matplotlib import colors
 import matplotlib.pyplot as plt
 
 
 def xy2d(n, x, y):
+    """Convert (x,y) coordinates to distance along
+    a Hilbert curve.
+    """
     d = 0
     s = n/2
     while s>0:
@@ -14,9 +18,11 @@ def xy2d(n, x, y):
     return d
 
 def d2xy(n, d):
-    """
-    take a d value in [0, n**2 - 1] and map it to
-    an x, y value (e.g. c, r).
+    """Convert distance along a Hilbert curve
+    to (x,y) coordinates.
+    
+    Takes a d value in [0, n**2 - 1] and maps it to
+    an x, y value.
     """
     assert(d <= n**2 - 1)
     t = d
@@ -44,18 +50,25 @@ def rot(n, x, y, rx, ry):
     return x, y
 
 
-for x,y in [(0,0), (0,1), (0,2), (0,3), (1,2)]:
-    d = xy2d(4, x,y)
-    x_, y_ = d2xy(4, d)
-    print "x,y=",x,y, "d=",d, "x_,y_=",x_,y_
+#for x,y in [(0,0), (0,1), (0,2), (0,3), (1,2)]:
+#    d = xy2d(4, x,y)
+#    x_, y_ = d2xy(4, d)
+#    print "x,y=",x,y, "d=",d, "x_,y_=",x_,y_
 
-N = 2**4
+N = 2**8
 ds = np.zeros((N,N))
-for y in range(N):
-    for x in range(N):
+for y in xrange(N):
+    for x in xrange(N):
         d = xy2d(N, x,y)
-        ds[(x,y)] = d
+        #ds[(x,y)] = d
+        ds[(x,y)] = d%3
 
-print ds
-plt.matshow(ds)
+#print ds
+
+#cmap = colors.ListedColormap(['red', 'green', 'blue'])
+cmap = colors.ListedColormap([(1.,0.,0.), (0.,1.,0.), (0.,0.,1.)])
+bounds = [0, 0.5, 1.5, 2.5]
+norm = colors.BoundaryNorm(bounds, cmap.N)
+
+plt.matshow(ds, cmap=cmap, norm=norm)
 plt.show()

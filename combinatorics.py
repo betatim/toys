@@ -1,4 +1,11 @@
-"""Generate all possible combinations of particles without duplicates"""
+"""Generate all possible combinations of particles without duplicates.
+
+This is a combinatorics engine used for particle physics. Given
+several sequences of input particles we want to generate all possible
+combinations of the particles in these sequences. Particles can be
+composite particles, which means particles used to construct
+them can not be used to for a combination.
+"""
 
 
 # This served as a prototype for a C++ implementation
